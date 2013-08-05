@@ -102,6 +102,10 @@ class Mysql55 < Formula
     end
     ln_s "#{prefix}/support-files/mysql.server", bin
 
+		if ! File.exist? "#{prefix}/share/mysql" && File.exist? "#{prefix}/share/mysql55"
+			ln_s "#{prefix/}share/mysql", "#{prefix}/share/mysql55"
+		end
+
     # Move mysqlaccess to libexec
     mv "#{bin}/mysqlaccess", libexec
     mv "#{bin}/mysqlaccess.conf", libexec
